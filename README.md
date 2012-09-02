@@ -35,4 +35,4 @@ or
 
 Win32 Classes
 -----
-Microsoft list all of the available classes [here](http://msdn.microsoft.com/en-us/library/windows/desktop/aa394084(v=vs.85).aspx).
+Microsoft list all of the available classes [here](http://msdn.microsoft.com/en-us/library/windows/desktop/aa394084.aspx).
