@@ -9,7 +9,7 @@ First create a connection to a remote machine.
 
     $wmi = new wmi($host, $username, $password);
 
-The name of the machine should be passed in by $host.  The $username should be a local admin account on the target machine; $password is pretty obvious.
+The name or IP address of the machine should be passed in by $host.  The $username should be a local admin account on the target machine; $password is pretty obvious.
 
 Connect to local machine
 -----
