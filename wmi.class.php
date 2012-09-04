@@ -14,8 +14,17 @@ class wmi {
 	 */
 	public function __construct($host = null, $username = null, $password = null) {
 		$wmiLocator = new COM('WbemScripting.SWbemLocator');
-		$this->connection = $wmiLocator->ConnectServer($host, 'root\CIMV2', $username, $password);
-		$this->connection->Security_->impersonationLevel = 3;
+		try {
+			$this->connection = $wmiLocator->ConnectServer($host, 'root\CIMV2', $username, $password);
+			$this->connection->Security_->impersonationLevel = 3;
+		} catch (Exception $e) {
+			// -2147352567 means that we're unable to connect to the local host with a username and password.
+			// Attempt connection again passing null values for username and password.
+			if ($e->getCode() == '-2147352567') {
+				$this->connection = $wmiLocator->ConnectServer($host, 'root\CIMV2', null, null);
+				$this->connection->Security_->impersonationLevel = 3;
+			}
+		}
 	}
 
 	/**
